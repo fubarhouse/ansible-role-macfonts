@@ -41,7 +41,7 @@
 - name: Mac Fonts | Install fonts
   copy:
     src: "/tmp/fonts-{{ item.0.name }}/{{ item.0.name }}-master/{{ item.0.directory }}/{{ item.1 }}"
-    dest: "/Users/KarlHepworth/Library/Fonts/{{ item.1 }}"
+    dest: "/Users/{{ fubarhouse_user }}/Library/Fonts/{{ item.1 }}"
   with_subelements:
     - "{{ fonts }}"
     - "files"
