@@ -7,10 +7,6 @@ This role is intended to install specific fonts which support sigatures onto mac
 
 It is configurable to install many fonts from various locations, and it has been made available publicly despite the niche purpose for existing.
 
-## Status
-
-Until such time as this role is actively used by its maintainer it is `under development` and unless you have experience with Ansible it is recommended you find an alternative solution.
-
 ## Requirements
 
  - Homebrew
@@ -34,7 +30,7 @@ fonts:
       - Monoisome-Regular.ttf
 ````
 
-Please note that master releases on github are working and verified, but non-master releases are known to cause fault. This may be resolved over time, so feel free to open a ticket. I do not intend for this role to be updated regularly unless it becomes popular and/or tickets are opened.
+Please note that master releases on github are working and verified, but non-master releases are known to cause fault - see issue #1.
 
 ## Dependencies
 
@@ -43,9 +39,9 @@ None.
 ## Example Playbook
 
 ````
-    - hosts: localhost
-      roles:
-        - fubarhouse.macfonts
+- hosts: localhost
+  roles:
+    - fubarhouse.macfonts
 ````
 
 ## License
