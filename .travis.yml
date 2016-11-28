@@ -1,0 +1,27 @@
+---
+sudo: required
+language: objective-c
+osx_image: xcode7.3
+
+install:
+  - sudo easy_install pip
+  - sudo pip install ansible
+  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+
+script:
+  # Install MacFonts role
+  - "ansible-galaxy install fubarhouse.macfonts"
+  # Syntax check
+  - "ansible-playbook ./tests/test.yml --syntax-check"
+  #  Run playbook with verbose
+  - "ansible-playbook ./tests/test.yml -vvvv"
+  - idempotence=$(mktemp)
+  - "ansible-playbook ./tests/test.yml -vvvv"
+  - >
+    tail ${idempotence}
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
