@@ -23,12 +23,14 @@
   get_url:
     url: "{{ item.archive }}"
     dest: "/tmp/fonts-{{ item.name }}.tar.gz"
+  changed_when: false
   with_items: "{{ fonts }}"
 
 - name: Mac Fonts | Make sure extraction folders exist
   file:
     path: "/tmp/fonts-{{ item.name }}/"
     state: directory
+  changed_when: false
   with_items: "{{ fonts }}"
 
 - name: Mac Fonts | Extract fonts
@@ -36,6 +38,7 @@
     src: "/tmp/fonts-{{ item.name }}.tar.gz"
     dest: "/tmp/fonts-{{ item.name }}"
     remote_src: yes
+  changed_when: false
   with_items: "{{ fonts }}"
 
 - name: Mac Fonts | Install fonts
