@@ -1,0 +1,8 @@
+---
+
+- name: Mac Fonts | Ensure brew requirements are met
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - gnu-tar

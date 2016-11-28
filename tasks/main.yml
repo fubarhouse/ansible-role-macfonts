@@ -1,65 +1,20 @@
 ---
-- name: Mac Fonts | Ensure brew requirements are met
-  homebrew:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - gnu-tar
 
-- name: Mac Fonts | Set fonts variable
+- name: "Define user variable for ssh use"
   set_fact:
-    fonts:
-      - name: FiraCode
-        archive: https://github.com/tonsky/FiraCode/archive/master.tar.gz
-        directory: distr/ttf
-        files:
-          - FiraCode-Bold.ttf
-          - FiraCode-Light.ttf
-          - FiraCode-Medium.ttf
-          - FiraCode-Regular.ttf
-          - FiraCode-Retina.ttf
-      - name: Monoid
-        archive: https://github.com/JB-Dmitry/monoid/archive/master.tar.gz
-        directory: Monoisome
-        files:
-          - Monoisome-Regular.ttf
-  when: fonts is undefined
+    fubarhouse_user: "{{ ansible_ssh_user }}"
+  when: ansible_ssh_user is defined and fubarhouse_user is undefined
 
-- name: Mac Fonts | Download fonts
-  get_url:
-    url: "{{ item.archive }}"
-    dest: "/tmp/fonts-{{ item.name }}.tar.gz"
-  with_items: "{{ fonts }}"
+- name: "Define user variable for non-ssh use"
+  set_fact:
+    fubarhouse_user: "{{ ansible_user_id }}"
+  when: ansible_ssh_user is not defined and fubarhouse_user is undefined
 
-- name: Mac Fonts | Make sure extraction folders exist
-  file:
-    path: "/tmp/fonts-{{ item.name }}/"
-    state: directory
-  with_items: "{{ fonts }}"
+- name: "Include requirement tasks"
+  include: requirements.yml
 
-- name: Mac Fonts | Extract fonts
-  unarchive:
-    src: "/tmp/fonts-{{ item.name }}.tar.gz"
-    dest: "/tmp/fonts-{{ item.name }}"
-    remote_src: yes
-  with_items: "{{ fonts }}"
+- name: "Include font tasks"
+  include: fonts.yml
 
-- name: Mac Fonts | Install fonts
-  copy:
-    src: "/tmp/fonts-{{ item.0.name }}/{{ item.0.name }}-master/{{ item.0.directory }}/{{ item.1 }}"
-    dest: "/Users/KarlHepworth/Library/Fonts/{{ item.1 }}"
-  with_subelements:
-    - "{{ fonts }}"
-    - "files"
-
-- name: Mac Fonts | Remove temporary data
-  file:
-    path: "/tmp/fonts-{{ item.name }}/"
-    state: absent
-  with_items: "{{ fonts }}"
-
-- name: Mac Fonts | Remove archives
-  file:
-    path: "/tmp/fonts-{{ item.name }}.tar.gz"
-    state: absent
-  with_items: "{{ fonts }}"
+- name: "Include cleanup tasks"
+  include: cleanup.yml

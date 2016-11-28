@@ -1,0 +1,13 @@
+---
+
+- name: Mac Fonts | Remove temporary data
+  file:
+    path: "/tmp/fonts-{{ item.name }}/"
+    state: absent
+  with_items: "{{ fonts }}"
+
+- name: Mac Fonts | Remove archives
+  file:
+    path: "/tmp/fonts-{{ item.name }}.tar.gz"
+    state: absent
+  with_items: "{{ fonts }}"
