@@ -25,12 +25,13 @@ To configure alternative fonts, use the following format.
 fonts:
   - name: Monoid
     archive: https://github.com/JB-Dmitry/monoid/archive/master.tar.gz
+    version: master
     directory: Monoisome
     files:
       - Monoisome-Regular.ttf
 ````
 
-Please note that master releases on github are working and verified, but non-master releases are known to cause fault - see issue #1.
+Please note the version is critical to input correctly, as github archives structure contains the tag used when creating the release or `master`.
 
 ## Dependencies
 

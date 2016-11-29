@@ -2,7 +2,7 @@
 
 - name: Mac Fonts | Remove temporary data
   file:
-    path: "/tmp/fonts-{{ item.name }}/"
+    path: "/tmp/fonts/"
     state: absent
   with_items: "{{ fonts }}"
   changed_when: false
