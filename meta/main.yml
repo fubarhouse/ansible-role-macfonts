@@ -1,6 +1,6 @@
 galaxy_info:
   author: Karl Hepworth
-  description: Installs Apple Mac Applications using MAS-CLI
+  description: Installs fonts from repositories to macOSX
   issue_tracker_url: http://example.com/issue/tracker
   license: MIT
   min_ansible_version: 2.1
@@ -17,9 +17,5 @@ galaxy_info:
   galaxy_tags:
     - mac
     - apple
-    - app
-    - mas
-    - cli
-    - application
-    - store
+    - fonts
 dependencies: []
