@@ -1,7 +1,7 @@
 # Ansible Role: Fonts
 
 [![Build Status](https://travis-ci.org/fubarhouse/ansible-role-macfonts.svg?branch=master)](https://travis-ci.org/fubarhouse/ansible-role-macfonts)
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-fubarhouse--macfonts-13298.svg)](https://galaxy.ansible.com/fubarhouse/macfonts)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-fubarhouse--macfonts-13836.svg)](https://galaxy.ansible.com/fubarhouse/macfonts)
 
 This role is intended to install specific fonts which support sigatures onto macOSX systems for use in JetBrains IDEs.
 
