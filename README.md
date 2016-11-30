@@ -24,14 +24,14 @@ To configure alternative fonts, use the following format.
 ````
 fonts:
   - name: Monoid
-    archive: https://github.com/JB-Dmitry/monoid/archive/master.tar.gz
+    archive: https://github.com/jb-dmitry/monoid.git
     version: master
     directory: Monoisome
     files:
       - Monoisome-Regular.ttf
 ````
 
-Please note the version is critical to input correctly, as github archives structure contains the tag used when creating the release or `master`.
+Please note that master will be automatically selected as a version if it isn't specified.
 
 ## Dependencies
 
