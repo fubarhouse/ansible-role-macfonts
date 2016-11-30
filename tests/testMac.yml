@@ -1,0 +1,6 @@
+---
+
+- hosts: localhost
+  tasks:
+    - name: include fubarhouse.macfonts main tasks file
+      include: ../tasks/main.yml

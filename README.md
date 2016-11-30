@@ -1,7 +1,7 @@
 # Ansible Role: Fonts
 
 [![Build Status](https://travis-ci.org/fubarhouse/ansible-role-macfonts.svg?branch=master)](https://travis-ci.org/fubarhouse/ansible-role-macfonts)
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-fubarhouse--macfonts-13298.svg)](https://galaxy.ansible.com/fubarhouse/macfonts)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-fubarhouse--macfonts-13836.svg)](https://galaxy.ansible.com/fubarhouse/macfonts)
 
 This role is intended to install specific fonts which support sigatures onto macOSX systems for use in JetBrains IDEs.
 
@@ -24,13 +24,14 @@ To configure alternative fonts, use the following format.
 ````
 fonts:
   - name: Monoid
-    archive: https://github.com/JB-Dmitry/monoid/archive/master.tar.gz
+    archive: https://github.com/jb-dmitry/monoid.git
+    version: master
     directory: Monoisome
     files:
       - Monoisome-Regular.ttf
 ````
 
-Please note that master releases on github are working and verified, but non-master releases are known to cause fault - see issue #1.
+Please note that master will be automatically selected as a version if it isn't specified.
 
 ## Dependencies
 
